@@ -7,7 +7,6 @@
     <style>
     </style>
     <body>
-        <iframe width="853" height="480" src="https://www.youtube.com/embed/ntaXWS8Lk34" title="How to use Raspberry Pi Imager | Install Raspberry Pi OS to your Raspberry Pi (Raspbian)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         <h1 class = "awesomeHeading">
             Boba is Awesome
         </h1>
@@ -56,10 +55,11 @@
             Have you ever wanted to watch a video without ADS? <small><em>Well of course you have.</em></small> Well now you can! Simply copy the URL and paste it below.
             <input class = "videoURL" type = "text" placeholder = "www.videos.com/example/blabla">
             <button type = "submit" class = "super">SUBMIT!</button>
-            <div class = "iframe" width = "100px" height = "100px" style = "background-color: red;"></div>
+            <div class = "iframe" style = "background-color: red;"></div>
         </form>
     </body>
     <script>
+        var video = document.querySelectorAll(".video")[0];
         var videoURL = document.querySelectorAll(".videoURL")[0];
         var videoForm = document.querySelectorAll(".videoForm")[0];
         var iframe = document.querySelectorAll(".iframe")[0];
@@ -72,12 +72,17 @@
             alert(ratingMsgs[parseFloat(rating.value)]);
             recentRating = rating.value;
         };
-        var swapUrl = function(e) {
-            url = 'https://www.youtube.com/watch?v=ntaXWS8Lk34';
-            iframe.innerHTML = '<iframe width="853" height="480" src="' + url + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
-        }
         
-        swapUrl();
-        document.querySelectorAll(".super").addEventListener("click", swapUrl);
+        submit.addEventListener("click", translate);
+        
+        var swapUrl = function() {
+            event.preventDefault();
+            var watchIframeURL = videoURL.value;
+            var embedIframeURL = watchIframeURL.replace('watch', 'embed');
+            iframe.innerHTML = '<iframe width="853" height="480" src="' + embedIframeURL + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+            alert(embedIframeURL);
+        };
+        
+        videoForm.addEventListener("submit", swapUrl);
     </script>
 </html>
