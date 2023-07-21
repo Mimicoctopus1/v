@@ -7,12 +7,10 @@
     <style>
     </style>
     <body>
-        <p>
-            This is currently an unfinished webpage.
-        </p>
         <h1 class = "awesomeHeading">
             Boba is Awesome
         </h1>
+        <form>
         <select type = "text" class = "rating">
             <option value = "0">
                 ???
@@ -49,23 +47,33 @@
             </option>
         </select>
         <input class = "submit" type = "button" value = "SUBMIT">
-        <p>Most recent entries on this computer in this browser. The below will not refresh if you refresh the page.</p>
-        <div class = "text-box"></div>
+        </form>
+        <br>
+        <div style = "border: 1px solid black;"></div>
+        <br>
+        <form class = "videoForm">
+            Have you ever wanted to watch a video without ADS? <small><em>Well of course you have.</em></small> Well now you can! Simply copy the URL and paste it below.
+            <input class = "videoURL" type = "url" placeholder = "www.videos.com/example/blabla"><input type = "submit" value = "SUBMIT!">
+            <div class = "iframe" width = "100px" height = "100px" style = "background-color: red;"></div>
+        </form>
     </body>
     <script>
-        var textBox = document.getElementsByClassName("text-box")[0];
+        var videoURL = document.querySelectorAll(".videoURL")[0];
+        var videoForm = document.querySelectorAll(".videoForm")[0];
+        var iframe = document.querySelectorAll(".iframe")[0];
         var rating = document.getElementsByClassName("rating")[0];
         var submit = document.getElementsByClassName("submit")[0];
         var ratingMsgs = ["You don't know how much you like boba? Maybe you haven't tried it.", "1? Are you allergic or something?", "You must not like boba if you rated it 2.", "You don't like boba?", "I'm glad you don't think boba is the worst thing ever.", "Boba isn't always people's favorite drink, but it's alright, most of the time.", "Boba's good, isn't it?", "Boba is great!", "We love boba, don't we?", "Everything is boba!", "BOBA IS AWESOME!!!!!!!!!!"]
         var awesomeHeading = document.getElementsByClassName("awesomeHeading")[0];
-        textBox.innerHTML = "";
         var ratingRep = 0;
-        textBox.innerHTML += localStorage.recentRating;
         var translate = function() {
-            alert(ratingMsgs[rating.value]);
-            localStorage.recentRating = rating.value;
-            textBox.innerHTML = localStorage.recentRating;
+            alert(ratingMsgs[parseFloat(rating.value)]);
+            recentRating = rating.value;
         };
         submit.addEventListener("click", translate);
+        var changeURL = function() {
+        iframe.innerHTML = '<iframe width="853" height="480" src=" ' + videoURL.value + '" title="Why Are the Inner and Outer Planets Different?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        }
+        videoForm.addEventListener("submit", changeURL)
     </script>
 </html>
