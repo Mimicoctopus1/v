@@ -52,7 +52,7 @@
         <div style = "border: 1px solid black;"></div>
         <br>
         <form class = "videoForm">
-            Have you ever wanted to watch a video without ADS? <small><em>Well of course you have.</em></small> Well now you can! Simply copy the URL and paste it below.
+            Have you ever wanted to watch a video without ADS? <small><em>Of course you have.</em></small> Well, now you can! Simply copy the URL and paste it below.
             <input class = "videoURL" type = "text" placeholder = "www.videos.com/example/blabla">
             <button type = "submit" class = "super">SUBMIT!</button>
             <div class = "iframe" style = "background-color: red;"></div>
@@ -78,9 +78,9 @@
         var swapUrl = function() {
             event.preventDefault();
             var watchIframeURL = videoURL.value;
-            var embedIframeURL = watchIframeURL.replace('watch', 'embed');
+            var embedIframeURL = watchIframeURL.replace('watch?v=', 'embed/');
             iframe.innerHTML = '<iframe width="853" height="480" src="' + embedIframeURL + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
-            alert(embedIframeURL);
+            alert(iframe.innerHTML);
         };
         
         videoForm.addEventListener("submit", swapUrl);
