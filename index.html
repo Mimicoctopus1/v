@@ -53,7 +53,8 @@
         <br>
         <form class = "videoForm">
             Have you ever wanted to watch a video without ADS? <small><em>Well of course you have.</em></small> Well now you can! Simply copy the URL and paste it below.
-            <input class = "videoURL" type = "url" placeholder = "www.videos.com/example/blabla"><input type = "submit" value = "SUBMIT!">
+            <input class = "videoURL" type = "text" placeholder = "www.videos.com/example/blabla">
+            <button type = "submit" class = "super">SUBMIT!</button>
             <div class = "iframe" width = "100px" height = "100px" style = "background-color: red;"></div>
         </form>
     </body>
@@ -70,11 +71,12 @@
             alert(ratingMsgs[parseFloat(rating.value)]);
             recentRating = rating.value;
         };
-        submit.addEventListener("click", translate);
-        var changeURL = function() {
-        alert(videoURL.value)
-        iframe.innerHTML = '<iframe width="853" height="480" src=" ' + videoURL.value + '" title="Why Are the Inner and Outer Planets Different?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        var swapUrl = function(e) {
+            url = 'https://www.youtube.com/watch?v=ntaXWS8Lk34';
+            iframe.innerHTML = '<iframe width="853" height="480" src="' + url + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
         }
-        videoForm.addEventListener("submit", changeURL);
+        
+        swapUrl();
+        document.querySelectorAll(".super").addEventListener("click", swapUrl);
     </script>
 </html>
