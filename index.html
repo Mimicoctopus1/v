@@ -72,8 +72,9 @@
         };
         submit.addEventListener("click", translate);
         var changeURL = function() {
-        iframe.innerHTML = '<iframe width="853" height="480" src=" ' + videoURL.value + '" title="Why Are the Inner and Outer Planets Different?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+            alert(videoURL.value)
+        //iframe.innerHTML = '<iframe width="853" height="480" src=" ' + videoURL.value + '" title="Why Are the Inner and Outer Planets Different?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
         }
-        videoForm.addEventListener("submit", changeURL)
+        videoForm.addEventListener("submit", changeURL);
     </script>
 </html>
