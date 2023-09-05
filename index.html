@@ -93,9 +93,14 @@ So, have you ever been watching a video, but then there was an ad, and you're li
         submit.addEventListener("click", translate);
         videoForm.addEventListener("submit", swapUrl);
         
-        var thisURL = new URL(location);
-        var thisParams = new URLSearchParams(thisURL.search);
-        /*Add an override for preset videos. 
+        {
+        var thisParams = new URLSearchParams(location.search);
+        var presetVideo = thisParams.getAll("video")[0];
+        if(presetVideo != undefined) {
+            videoURL.value = presetVideo;
+            videoURL.placeholder = presetVideo;
+        }
+        }/*Add an override for preset videos. 
         {Get the video link from the link. For example,
         
 https://mimicoctopus1.github.io/v?v=www.video.com/video.mp3
