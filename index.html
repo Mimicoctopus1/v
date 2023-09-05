@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+Hey everybody! Here's the inspiration for this project:
+So, have you ever been watching a video, but then there was an ad, and you're like: "IIII'mmmmm never going to buy this weird Grommiry spellcheck! Why is there even such an ad for this?!" If that's you, then you know what it feels like to have an ad blow up in your face. Well, I thought maybe there would be a way to get rid of that, because the videos down here on KA don't have ads! Well, that's because KA uses 'embeds'. An embed gets the video and then puts it on your webpage, with no ads or "Please buy our Premium to get rid of ads." It also blocks autoplay from showing you videos you have no reason to be watching. THEENN, I found out that embed URL links are the same as normal ones, only with something in them that turns it into an embed. So, long story short: find some embed code, make a form to launch any url into the embed, stick it in an iframe, and POOF! All done. The only problem is that KA interface blocks iframes. Heh.
+-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -68,21 +72,34 @@
         var ratingMsgs = ["You don't know how much you like boba? Maybe you haven't tried it.", "1? Are you allergic or something?", "You must not like boba if you rated it 2.", "You don't like boba?", "I'm glad you don't think boba is the worst thing ever.", "Boba isn't always people's favorite drink, but it's alright, most of the time.", "Boba's good, isn't it?", "Boba is great!", "We love boba, don't we?", "Everything is boba!", "BOBA IS AWESOME!!!!!!!!!!"]
         var awesomeHeading = document.getElementsByClassName("awesomeHeading")[0];
         var ratingRep = 0;
-        var translate = function() {
+        var ratingTranslate = function() {
             alert(ratingMsgs[parseFloat(rating.value)]);
             recentRating = rating.value;
         };
         
-        submit.addEventListener("click", translate);
-        
         var swapUrl = function() {
             event.preventDefault();
             var watchIframeURL = videoURL.value;
-            var embedIframeURL = watchIframeURL.replace('watch?v=', 'embed/');
-            iframe.innerHTML = '<iframe width="853" height="480" src="' + embedIframeURL + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
-            alert(iframe.innerHTML);
+            
+            {
+            var embedIframeUrl = watchIframeUrl;
+            embedIframeURL = embedIframeUrl.replace('watch?v=', 'embed/');
+            embedIframeUrl.replace('&authuser=0', '')
+            }/*Formatting*/
+            
+            iframe.innerHTML += '<iframe width="853" height="480" src="' + embedIframeURL + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
         };
         
         videoForm.addEventListener("submit", swapUrl);
+        submit.addEventListener("click", ratingTranslate);
+        
+        {
+        var thisURL = new URL(location);
+        var thisParams = new URLSearchParams(thisURL.search);
+        
+        if(params.getAll("v").length != 0) {
+            videoURL.value = params.getAll("v")[0];
+            videoURL.placeholder = params.getAll("v");
+        }}/*Provide an override in case you want to preset the video to be used.*/
     </script>
 </html>
