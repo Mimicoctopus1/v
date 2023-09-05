@@ -83,7 +83,7 @@ So, have you ever been watching a video, but then there was an ad, and you're li
             
             {
             var embedIframeUrl = watchIframeUrl;
-            embedIframeURL = embedIframeUrl.replace('watch?v=', 'embed/');
+            embedIframeURL = embedIframeURL.replace('watch?v=', 'embed/');
             embedIframeURL.replace('&authuser=0', '')
             }/*Formatting*/
             
@@ -92,14 +92,5 @@ So, have you ever been watching a video, but then there was an ad, and you're li
         
         videoForm.addEventListener("submit", swapUrl);
         submit.addEventListener("click", ratingTranslate);
-        
-        /*{
-        var thisURL = new URL(location);
-        var thisParams = new URLSearchParams(thisURL.search);
-        
-        if(params.getAll("v").length != 0) {
-            videoURL.value = params.getAll("v")[0];
-            videoURL.placeholder = params.getAll("v");
-        }}/*Provide an override in case you want to preset the video to be used.*/
     </script>
 </html>
