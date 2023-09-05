@@ -86,11 +86,20 @@ So, have you ever been watching a video, but then there was an ad, and you're li
             embedIframeURL = embedIframeURL.replace('watch?v=', 'embed/');
             embedIframeURL = embedIframeURL.replace('&authuser=0', '');
             iframe.innerHTML = '<iframe width="853" height="480" src="' + embedIframeURL + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
-            alert("IFRAME: " + iframe.innerHTML + "\n\nORIGINAL VIDEO: " + videoURL.value + "\nNEW VIDEO:         " + embedIframeURL);
+            alert("IFRAME: " + iframe.innerHTML + "\n\nORIGINAL VIDEO: " + videoURL.value + "\nNEW VIDEO:            " + embedIframeURL);
             }/*Format the embed URL.*/
         };
         
         submit.addEventListener("click", translate);
         videoForm.addEventListener("submit", swapUrl);
+        
+        var thisURL = new URL(location);
+        var thisParams = new URLSearchParams(thisURL.search);
+        /*Add an override for preset videos. 
+        {Get the video link from the link. For example,
+        
+https://mimicoctopus1.github.io/v?v=www.video.com/video.mp3
+
+        }MORE*/
     </script>
 </html>
