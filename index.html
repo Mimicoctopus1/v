@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 Hey everybody! Here's the inspiration for this project:
-So, have you ever been watching a video, but then there was an ad, and you're like: "IIII'mmmmm never going to buy this weird Grommiry spellcheck! Why is there even such an ad for this?!" If that's you, then you know what it feels like to have an ad blow up in your face. Well, I thought maybe there would be a way to get rid of that, because the videos down here on KA don't have ads! Well, that's because KA uses 'embeds'. An embed gets the video and then puts it on your webpage, with no ads or "Please buy our Premium to get rid of ads." It also blocks autoplay from showing you videos you have no reason to be watching. THEENN, I found out that embed URL links are the same as normal ones, only with something in them that turns it into an embed. So, long story short: find some embed code, make a form to launch any url into the embed, stick it in an iframe, and POOF! All done. The only problem is that KA interface blocks iframes. Heh.
+So, have you ever been watching a video, but then there was an ad, and you're like: "IIII'mmmmm never going to buy this weird spellcheck! Why is there even such an ad for this?!" If that's you, then you know what it feels like to have an ad blow up in your face. Well, I thought maybe there would be a way to get rid of that, because the videos down here on KA don't have ads! Well, that's because KA uses 'embeds'. An embed gets the video and then puts it on your webpage, with no ads or "Please buy our Premium to get rid of ads." It also blocks autoplay from showing you videos you have no reason to be watching. THEENN, I found out that embed URL links are the same as normal ones, only with something in them that turns it into an embed. So, long story short: find some embed code, make a form to launch any url into the embed, stick it in an iframe, and POOF! All done. The only problem is that KA interface blocks iframes. Heh.
 -->
 <html>
     <head>
@@ -84,7 +84,8 @@ So, have you ever been watching a video, but then there was an ad, and you're li
             {
             var embedIframeURL = watchIframeURL
             embedIframeURL = embedIframeURL.replace('watch?v=', 'embed/');
-            embedIframeURL = embedIframeURL.replace('&authuser=0', '');
+            embedIframeURL = embedIframeURL.delete("authuser");
+            embedIframeURL = embedIframeURL.delete("feature");
             iframe.innerHTML = '<iframe width="853" height="480" src="' + embedIframeURL + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
             alert("IFRAME: " + iframe.innerHTML + "\n\nORIGINAL VIDEO: " + videoURL.value + "\nNEW VIDEO:            " + embedIframeURL);
             }/*Format the embed URL.*/
@@ -99,6 +100,7 @@ So, have you ever been watching a video, but then there was an ad, and you're li
         if(presetVideo != undefined) {
             videoURL.value = presetVideo;
             videoURL.placeholder = presetVideo;
+            swapUrl();
         }
         }/*Add an override for preset videos. 
         {Get the video link from the link. For example,
