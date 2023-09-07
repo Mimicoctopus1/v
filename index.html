@@ -82,12 +82,12 @@ So, have you ever been watching a video, but then there was an ad, and you're li
             var watchIframeURL = videoURL.value;
             
             {
-            var embedIframeURL = watchIframeURL
+            var embedIframeURL = watchIframeURL;
             embedIframeURL = embedIframeURL.replace('watch?v=', 'embed/');
-            embedIframeURL = embedIframeURL.delete("authuser");
-            embedIframeURL = embedIframeURL.delete("feature");
+            ampersandIndex = embedIframeURL.indexOf("&");
+            embedIframeURL = embedIframeURL.slice(0, ampersandIndex);
             iframe.innerHTML = '<iframe width="853" height="480" src="' + embedIframeURL + '" title="Your Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
-            alert("IFRAME: " + iframe.innerHTML + "\n\nORIGINAL VIDEO: " + videoURL.value + "\nNEW VIDEO:            " + embedIframeURL);
+            alert("IFRAME: " + iframe.innerHTML + "\n\nORIGINAL VIDEO: " + videoURL.value + "\nNEW VIDEO:           " + embedIframeURL);
             }/*Format the embed URL.*/
         };
         
