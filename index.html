@@ -107,7 +107,7 @@ This is how it gets ads.
             {
             if(!(watchURL.startsWith("https://") || watchURL.startsWith("http://"))) {
                 watchURL = "https://" + watchURL;
-            }}/*Add https:// or http://  */
+            }}/*Require https:// or http://. Otherwise add it.*/
             
             {
             var embedIframeURL = watchURL;/*Get a copy of watchURL to edit.*/
@@ -141,7 +141,7 @@ This is how it gets ads.
         {
         var thisParams = new URLSearchParams(location.search);
         var presetVideo = thisParams.getAll("video")[0];
-        if(typeof presetVideo == string) {
+        if(presetVideo != undefined) {
             videoURL.value = presetVideo;
             videoURL.placeholder = presetVideo;
             swapUrl();
