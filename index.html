@@ -29,7 +29,7 @@ This is how it gets ads.
 <html>
     <head>
         <meta charset="utf-8">
-        <title>I Like Boba</title>
+        <title class = "title">I Like Boba</title>
     </head>
     <style>
     </style>
@@ -100,15 +100,20 @@ This is how it gets ads.
             recentRating = rating.value;
         };
         
-        var swapUrl = function() {
+        var swapUrl = function(event) {
             event.preventDefault();
             var watchURL = videoURL.value;/*Get the URL that somebody would generally watch in a browser.*/
+            
+            {
+            if(!(watchURL.startsWith("https://") || watchURL.startsWith("http://"))) {
+                watchURL = "https://" + watchURL;
+            }}/*Add https:// or http://  */
             
             {
             var embedIframeURL = watchURL;/*Get a copy of watchURL to edit.*/
             var embedIframeParams = new URLSearchParams(new URL(embedIframeURL).search);/*Make a URL obj out of embedIframeURL, extract the query, and convert into a searchParam.*/
             
-            var videoID = embedIframeParams.getAll("v")[0];/*Get the watch ID, or the code identifying that video.*/
+            var videoID = embedIframeParams.getAll("v")[0];/*Get the watch ID, or the code identifying that video. FROM the video link.*/
             
             {
             queryStart = embedIframeURL.indexOf("?");
@@ -136,15 +141,17 @@ This is how it gets ads.
         {
         var thisParams = new URLSearchParams(location.search);
         var presetVideo = thisParams.getAll("video")[0];
-        if(presetVideo != undefined) {
+        if(typeof presetVideo == string) {
             videoURL.value = presetVideo;
             videoURL.placeholder = presetVideo;
             swapUrl();
         }
+        
+        
         }/*Add an override for preset videos. 
         {Get the video link from the link. For example,
         
-https://mimicoctopus1.github.io/v?v=www.video.com/video.mp3
+https://mimicoctopus1.github.io/v?video=www.video.com/video.mp3
 
         }MORE*/
     </script>
