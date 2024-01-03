@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 This project does two things, respond to how much you like boba and get rid of ads.
-This is how it gets ads.
+This is how it gets rid of ads.
 1: Take the original URL
     https://www.supertoob.com/watch?v=jaDKJ98f&authuser=0
 2: Make a URLSearchParams object
@@ -137,6 +137,7 @@ This is how it gets ads.
         
         submit.addEventListener("click", translate);
         videoForm.addEventListener("submit", swapUrl);
+        document.addEventListener("onload", swapUrl);
         
         {
         var thisParams = new URLSearchParams(location.search);
@@ -144,9 +145,7 @@ This is how it gets ads.
         if(presetVideo != undefined) {
             videoURL.value = presetVideo;
             videoURL.placeholder = presetVideo;
-            swapUrl();
         }
-        
         
         }/*Add an override for preset videos. 
         {Get the video link from the link. For example,
