@@ -135,9 +135,13 @@ This is how it gets rid of ads.
             alert("IFRAME: " + iframe.innerHTML + "\n\nORIGINAL VIDEO: " + videoURL.value + "\nNEW VIDEO:           " + embedIframeURL);/*Tell the user what just happened.*/
         };
         
+        var simulateSubmit = function() {
+            submit.click();
+        };
+        
         submit.addEventListener("click", translate);
         videoForm.addEventListener("submit", swapUrl);
-        document.addEventListener("onload", swapUrl);
+        document.addEventListener("load", simulateSubmit);
         
         {
         var thisParams = new URLSearchParams(location.search);
