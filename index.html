@@ -81,7 +81,7 @@ This is how it gets rid of ads.
         <form class = "videoForm">
             Have you ever wanted to watch a video without ADS? <small><em>Of course you have.</em></small> Well, now you can! Simply copy the URL and paste it below.
             <input class = "videoURL" type = "text" placeholder = "www.videos.com/example/blabla">
-            <button type = "submit" class = "super">SUBMIT!</button>
+            <button type = "submit" class = "submitVideo">SUBMIT!</button>
             <div class = "iframe" style = "background-color: red;"></div>
         </form>
     </body>
@@ -92,7 +92,8 @@ This is how it gets rid of ads.
         var iframe = document.querySelectorAll(".iframe")[0];
         var rating = document.getElementsByClassName("rating")[0];
         var submit = document.getElementsByClassName("submit")[0];
-        var ratingMsgs = ["You don't know how much you like boba? Maybe you haven't tried it.", "1? Are you allergic or something?", "You must not like boba if you rated it 2.", "You don't like boba?", "I'm glad you don't think boba is the worst thing ever.", "Boba isn't always people's favorite drink, but it's alright, most of the time.", "Boba's good, isn't it?", "Boba is great!", "We love boba, don't we?", "Everything is boba!", "BOBA IS AWESOME!!!!!!!!!!"]
+        var submitVideo = document.getElementsByClassName("submitVideo")[0];
+        var ratingMsgs = ["You don't know how much you like boba? Maybe you haven't tried it.", "1? Are you allergic or something?", "You must not like boba if you rated it 2.", "You don't like boba?", "I'm glad you don't think boba is the worst thing ever.", "Boba isn't always people's favorite drink, but it's alright, most of the time.", "Boba's good, isn't it?", "Boba is great!", "We love boba, don't we?", "Everything is boba!", "BOBA IS AWESOME!!!!!!!!!!"];
         var awesomeHeading = document.getElementsByClassName("awesomeHeading")[0];
         var ratingRep = 0;
         var translate = function() {
@@ -136,11 +137,11 @@ This is how it gets rid of ads.
         };
         
         var simulateSubmit = function() {
-            submit.click();
+            submitVideo.click();/*Simulate clicking the button.*/
         };
         
         submit.addEventListener("click", translate);
-        videoForm.addEventListener("submit", swapUrl);
+        submitVideo.addEventListener("click", swapUrl);
         document.addEventListener("load", simulateSubmit);
         
         {
