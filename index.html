@@ -142,7 +142,7 @@ This is how it gets rid of ads.
         
         submit.addEventListener("click", translate);
         submitVideo.addEventListener("click", swapUrl);
-        document.addEventListener("load", simulateSubmit);
+        window.addEventListener("load", simulateSubmit);
         
         {
         var thisParams = new URLSearchParams(location.search);
