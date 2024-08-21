@@ -27,7 +27,6 @@ This is how it gets rid of ads.
     |▶_______________cc__🔳
 -->
 <html>
-    <script src = "https://www.youtube.com/iframe_api"></script><!--YouTube API to detect when the song ends for bookmark mode.-->
     <head>
         <meta charset="utf-8">
         <title class = "title">I Like Boba</title>
@@ -94,6 +93,10 @@ This is how it gets rid of ads.
         var video = document.querySelectorAll(".video")[0];
         var videoURL = document.querySelectorAll(".videoURL")[0];
         var bookmarkInput = document.querySelectorAll(".bookmarkInput")[0];
+        
+        
+        
+        
         var videoForm = document.querySelectorAll(".videoForm")[0];
         var iframe = document.querySelectorAll(".iframe")[0];
         var rating = document.getElementsByClassName("rating")[0];
@@ -105,18 +108,6 @@ This is how it gets rid of ads.
         var awesomeHeading = document.getElementsByClassName("awesomeHeading")[0];
         var ratingRep = 0;
         var player;
-        function onYouTubeIframeAPIReady() {
-          player = new YT.Player("iframe", {
-            height: '390',
-            width: '640',
-            videoId: 'M7lc1UVf-VE',
-            playerVars: {
-              'playsinline': 1,
-              'onReady': onPlayerReady,
-              'onStateChange': onPlayerStateChange
-            }
-          });
-        }
         var translate = function() {
             alert(ratingMsgs[parseFloat(rating.value)]);
             recentRating = rating.value;
@@ -189,7 +180,7 @@ This is how it gets rid of ads.
                 videoURL.value = bookmarks[0];
                 submitVideo.click();
                 player = iframe.childNodes[0];
-                console.log(player.getPlayerState());
+                console.log(player.getCurrentTime);
                 break
             }
         }
