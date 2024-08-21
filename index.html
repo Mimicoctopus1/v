@@ -158,6 +158,7 @@ This is how it gets rid of ads.
             }
             elements = elements[1].querySelectorAll("a");
             linksProcessed = 0;
+            var bookmarks = [];
             while(linksProcessed < elements.length) {
                 var element = elements[linksProcessed];
                 element = element.href;
@@ -165,13 +166,13 @@ This is how it gets rid of ads.
                     element = new URL(element);
                     element = new URLSearchParams(element.search);
                     element = element.get("video");
-                    console.log(element)
                 }
+                bookmarks[bookmarks.length] = element
                 linksProcessed += 1;
             }
             var videosWatched = 0;
             while(videosWatched < elements.length) {
-                videoURL.value = elements[videosWatched];
+                videoURL.value = bookmarks[0];
                 submitVideo.click();
                 break
             }
