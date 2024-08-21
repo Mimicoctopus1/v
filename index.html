@@ -104,6 +104,19 @@ This is how it gets rid of ads.
         var ratingMsgs = ["You don't know how much you like boba? Maybe you haven't tried it.", "1? Are you allergic or something?", "You must not like boba if you rated it 2.", "You don't like boba?", "I'm glad you don't think boba is the worst thing ever.", "Boba isn't always people's favorite drink, but it's alright, most of the time.", "Boba's good, isn't it?", "Boba is great!", "We love boba, don't we?", "Everything is boba!", "BOBA IS AWESOME!!!!!!!!!!"];
         var awesomeHeading = document.getElementsByClassName("awesomeHeading")[0];
         var ratingRep = 0;
+        var player;
+        function onYouTubeIframeAPIReady() {
+          player = new YT.Player("iframe", {
+            height: '390',
+            width: '640',
+            videoId: 'M7lc1UVf-VE',
+            playerVars: {
+              'playsinline': 1,
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
+        }
         var translate = function() {
             alert(ratingMsgs[parseFloat(rating.value)]);
             recentRating = rating.value;
