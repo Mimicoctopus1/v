@@ -162,7 +162,10 @@ This is how it gets rid of ads.
                 var element = elements[linksProcessed];
                 element = element.href;
                 if(element.includes("video=")) {
-                    element = new URL(element).searchParams.get("video");
+                    element = new URL(element);
+                    element = new URLSearchParams(element.search);
+                    element = element.get("video");
+                    console.log(element)
                 }
                 linksProcessed += 1;
             }
