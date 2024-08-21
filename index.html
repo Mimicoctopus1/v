@@ -27,6 +27,7 @@ This is how it gets rid of ads.
     |▶_______________cc__🔳
 -->
 <html>
+    <script src = "https://www.youtube.com/iframe_api"></script><!--YouTube API to detect when the song ends for bookmark mode.-->
     <head>
         <meta charset="utf-8">
         <title class = "title">I Like Boba</title>
@@ -174,6 +175,8 @@ This is how it gets rid of ads.
             while(videosWatched < elements.length) {
                 videoURL.value = bookmarks[0];
                 submitVideo.click();
+                player = iframe.childNodes[0];
+                console.log(player.getPlayerState());
                 break
             }
         }
