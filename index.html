@@ -82,13 +82,14 @@ This is how it gets rid of ads.
             Have you ever wanted to watch a video without ADS? <small><em>Of course you have.</em></small> Well, now you can! Simply copy the URL and paste it below.
             <input class = "videoURL" type = "text" placeholder = "www.videos.com/example/blabla">
             <button type = "submit" class = "submitVideo">SUBMIT!</button>
-            <div class = "iframe" style = "background-color: red;"></div>
+            <div id = "iframe" class = "iframe" style = "background-color: red;"></div>
         <div style = "border: 1px solid black;"></div>
         <p>
             Do you want to watch many videos? Bookmark all  your videos in a folder called "MUSIC". Put the folder in the Bookmarks Bar. Type in "about:bookmarks" in a new tab. You should see a list of many bookmarks. Depending on your browser, there may be three dots in the corner. Click them and select export bookmarks. Click Save or Yes to all the questions. It will download a file. Go get  that file and open it in a text editor. Copy the whole thing and put in here. <input class = "bookmarkInput" placeholder="<!DOCTYPE NETSCAPE-Bookmark-file-1>...</DL><p>"><button type = "submit" class = "submitBookmarks">SUBMIT!</button>
         </p>
         </form>
     </body>
+    <script src = "https://www.youtube.com/iframe_api"></script>
     <script>
         var video = document.querySelectorAll(".video")[0];
         var videoURL = document.querySelectorAll(".videoURL")[0];
@@ -107,7 +108,6 @@ This is how it gets rid of ads.
         var ratingMsgs = ["You don't know how much you like boba? Maybe you haven't tried it.", "1? Are you allergic or something?", "You must not like boba if you rated it 2.", "You don't like boba?", "I'm glad you don't think boba is the worst thing ever.", "Boba isn't always people's favorite drink, but it's alright, most of the time.", "Boba's good, isn't it?", "Boba is great!", "We love boba, don't we?", "Everything is boba!", "BOBA IS AWESOME!!!!!!!!!!"];
         var awesomeHeading = document.getElementsByClassName("awesomeHeading")[0];
         var ratingRep = 0;
-        var player;
         var translate = function() {
             alert(ratingMsgs[parseFloat(rating.value)]);
             recentRating = rating.value;
@@ -178,8 +178,20 @@ This is how it gets rid of ads.
             while(videosWatched < elements.length) {
                 videoURL.value = bookmarks[0];
                 submitVideo.click();
-                player = iframe.childNodes[0];
-                console.log(player.querySelectorAll("video")[0].currentTime);
+                player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: videoID,
+                    playerVars: {
+                      'autoplay': 0,
+                      'controls': 1
+                    },
+                    events: {
+                      'onReady': function(event) {
+                          console.log(player.getDuration());
+                      }
+                    }
+                });
                 break
             }
         }
